@@ -1,0 +1,26 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="language" content="en-US"><title>Land Area Converter India | West Bengal | Convert Measurements</title><meta name="description" content="Convert land area measurements in India and West Bengal easily and accurately with our online converter tool. Learn about popular units of measurement and common use cases for land area conversions in this region."><meta name="keywords" content="land area, converter, India, West Bengal, measurements, units, conversion, tool"><script defer="defer" src="assets/js/bundle.0dda147a96a517046d55.js"></script><link href="assets/css/style.7e977757d7909b2c950d.css" rel="stylesheet"></head><body><header class="brand-container row justify-content-center align-items-center"><div class="col-md-12"><h1>Land Area Converter</h1><p>Convert land area measurements used in India and West Bengal with ease using our online tool.</p></div></header><div class="container row justify-content-center align-items-center"><div class="row"><div class="col-md-6 mb-2"><div class="card"><div class="card-body"><form><div class="form-group my-2"><label for="fromValue">Value:</label> <input type="number" class="form-control" id="fromValue" placeholder="Enter value"></div><div class="form-group my-2"><label for="fromUnit">From:</label> <select class="form-control select2 py-2" id="fromUnit" style="width: 100%;"></select></div><div class="form-group my-2"><label for="toUnit">To:</label> <select class="form-control select2 py-2" id="toUnit" style="width: 100%;"></select></div><button type="submit" class="btn btn-primary w-100 my-2">Convert</button></form></div></div></div><div class="col-md-6"><div class="card shadow-sm rounded-lg"><div class="card-header bg-dark text-white rounded-top"><h5 class="card-title mb-0">Conversion Result</h5></div><div class="card-body p-4"><p class="card-text lead">No conversion has been made yet.</p></div><div class="card-footer text-muted small"><em id="conversion-message">Start by selecting units to convert and entering a value.</em></div></div></div></div></div><div class="px-3 pt-2 pb-3 text-center text-xs text-gray-500 dark:text-gray-400 md:px-4 md:pt-3 md:pb-6"><p class="bg-white-text">Check out my <a href="https://github.com/anolkrghosh/area-converter" target="_blank" rel="noreferrer">Area Converter</a> If you have any issues or ideas on how I can improve it, please let me know. Don't be shy, I'd love to hear from you!</p><p class="bg-white-text">Also, feel free to check out my other projects on <a href="https://github.com/anolkrghosh" target="_blank" rel="noreferrer">Github/anolkrghosh</a>.</p></div><script>const converter = new Converter()
+        $(document).ready(function () {
+            let units = converter.getUnits();
+            let options = [];
+            $.each(units, function (index, value) {
+                options.push({ id: value, text: value });
+            });
+
+            $('select').select2({
+                data: options
+            });
+        });</script><script>const form = document.querySelector('form');
+        const result = document.querySelector('.card-text');
+        const conversionMessage = document.querySelector('#conversion-message');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const fromValue = parseFloat(document.querySelector('#fromValue').value);
+            const fromUnit = document.querySelector('#fromUnit').value;
+            const toUnit = document.querySelector('#toUnit').value;
+            const resultValue = converter.convert(fromValue, fromUnit, toUnit);
+
+            result.textContent = `${fromValue} ${fromUnit} = ${resultValue.toFixed(2)} ${toUnit}`;
+            conversionMessage.textContent = `${fromValue} ${fromUnit} is equal to ${resultValue.toFixed(2)} ${toUnit}. Calculated using ${formula(fromUnit, toUnit)}. Remember to double-check the result and the units used!`;
+        });</script></body></html>
